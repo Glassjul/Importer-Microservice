@@ -6,6 +6,10 @@ The Importer microservice takes raw input and returns it as structured JSON that
 REST API (HTTP requests with JSON responses)
 
 
+**UML Sequesnce Diagram**
+
+<img width="763" height="569" alt="Screenshot 2026-11-14 at 11 28 48 AM" src="https://github.com/user-attachments/assets/38de380b-4244-4336-adec-2528f28104ef" />
+
 **Request Data**
 
 The microservice runs on its own and listens on a port (for example, http://localhost:5001). To get definitions, the main program sends a POST request to /define with a JSON body containing the word list. To parse a CSV, it sends a POST request to /parse-csv with the file attached.
@@ -43,3 +47,4 @@ if response.status_code == 200:
 else:
   print("Request failed:", response_data["errors"])
 ```
+
