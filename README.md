@@ -6,10 +6,6 @@ The Importer microservice takes raw input and returns it as structured JSON that
 REST API (HTTP requests with JSON responses)
 
 
-**UML Sequesnce Diagram**
-
-<img width="763" height="569" alt="Screenshot 2026-11-14 at 11 28 48 AM" src="https://github.com/user-attachments/assets/38de380b-4244-4336-adec-2528f28104ef" />
-
 **Request Data**
 
 The microservice runs on its own and listens on a port (for example, http://localhost:5001). To get definitions, the main program sends a POST request to /define with a JSON body containing the word list. To parse a CSV, it sends a POST request to /parse-csv with the file attached.
@@ -32,7 +28,7 @@ response = requests.post(url, json=request_body)
 The microservice sends back an HTTP response with a JSON body. The body contains a status, a data list with successfully processed results, and an errors list for any items that could not be processed. If a request is valid but some words cannot be found, the microservice will still return a 200 OK response. Successfully processed words will appear in data, while any words that could not be found will appear in errors. If the entire request cannot be processed, such as when an invalid or improperly formatted CSV file is uploaded, the microservice will return a 400 Bad Request response with an error message.
 
 
-**Recieve Example**
+**Receive Example**
 ```
 response_data = response.json()
 
@@ -47,4 +43,8 @@ if response.status_code == 200:
 else:
   print("Request failed:", response_data["errors"])
 ```
+**UML Sequence Diagram**
+
+<img width="854" height="736" alt="Screenshot 2026-11-15 at 12 09 04 PM" src="https://github.com/user-attachments/assets/2075aaec-f730-4d44-8836-51c1409747e1" />
+
 
